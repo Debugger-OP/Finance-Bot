@@ -16,7 +16,10 @@ import dj_database_url
 from decouple import config
 from dotenv import load_dotenv
 
-load_dotenv()
+if os.environ.get("RENDER") is None:
+    from dotenv import load_dotenv
+    load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -38,12 +41,14 @@ SECRET_KEY = 'django-insecure-a3+%c4s1=q@5p%da&=+*lf(3ayou+^8xxp^hf$f%t)_*ga^qv$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    'financebot-dba5.onrender.com',
-    'http://localhost:5173',
+    "127.0.0.1",
+    "localhost",
+    "financebot-damg.onrender.com",
+    "http://localhost:5173",
 ]
+
 
 
 # Application definition
