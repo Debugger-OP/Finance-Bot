@@ -11,13 +11,16 @@ function App() {
     if (!userInput.trim()) return;
 
     try {
-      const res = await fetch("http://localhost:8000/api/chat/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ user_input: userInput }),
-      });
+      const res = await fetch(
+        "https://financebot-damg.onrender.com/api/chat/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ user_input: userInput }),
+        }
+      );
 
       const data = await res.json();
       setResponse(data.response || data.error || "No response received.");
